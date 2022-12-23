@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+    lat:
+        container_name: lat
+        image: marcelofabianov/php-8.1-fpm-pgsql:latest
+        restart: always
+        working_dir: /var/www/html
+        environment:
+            TZ: '${TZ:-}'
+        volumes:
+            - .:/var/www/html
+        networks:
+            - lat_network
+        ports:
+            - "9000:9000"
+            - "9003:9003"
+            - "9191:9191"
+networks:
+    lat_network:
+        driver: bridge
