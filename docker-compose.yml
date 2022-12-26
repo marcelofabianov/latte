@@ -3,13 +3,16 @@ version: '3.7'
 services:
     lat:
         container_name: lat
-        image: marcelofabianov/php-8.1-fpm-pgsql:latest
+        build: ./docker
         restart: always
         working_dir: /var/www/html
         environment:
             TZ: '${TZ:-}'
+            XDEBUG_CONFIG: remote_host=host.docker.internal
         volumes:
             - .:/var/www/html
+            - ./docker/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+            - ./docker/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
         networks:
             - lat_network
         ports:
