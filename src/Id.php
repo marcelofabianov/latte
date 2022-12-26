@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Latte;
 
 use InvalidArgumentException;
+use Latte\Interfaces\ValueObject;
 use Ramsey\Uuid\Uuid;
 
-final class Id
+final class Id implements ValueObject
 {
     private readonly string $value;
 
@@ -21,7 +22,7 @@ final class Id
         return $this->value;
     }
 
-    public function equals(self $other): bool
+    public function equals(self|ValueObject $other): bool
     {
         return $this->value === $other->getValue();
     }
@@ -41,9 +42,9 @@ final class Id
         return new self((string) Uuid::uuid4());
     }
 
-    public static function create(string $value): self
+    public static function create($value): self
     {
-        if (! self::isValid($value)) {
+        if (! is_string($value) || ! self::isValid($value)) {
             throw new InvalidArgumentException('Invalid UUID');
         }
 
