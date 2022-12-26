@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Latte;
 
-use InvalidArgumentException;
 use Latte\Interfaces\ValueObject;
-use Ramsey\Uuid\Uuid;
 
-final class Id implements ValueObject
+final class Email implements ValueObject
 {
     private readonly string $value;
 
@@ -32,20 +30,19 @@ final class Id implements ValueObject
         return $this->getValue();
     }
 
-    public static function isValid(string $value): bool
+    public static function isValid(string $email): bool
     {
-        return Uuid::isValid($value);
+        if (filter_var(filter_var($email, FILTER_SANITIZE_EMAIL), FILTER_VALIDATE_EMAIL)) {
+            return true;
+        }
+
+        return false;
     }
 
-    public static function random(): self
-    {
-        return new self((string) Uuid::uuid4());
-    }
-
-    public static function create($value): self
+    public static function create($value): ValueObject
     {
         if (! is_string($value) || ! self::isValid($value)) {
-            throw new InvalidArgumentException('Invalid UUID');
+            throw new \InvalidArgumentException('Invalid Email!');
         }
 
         return new self($value);

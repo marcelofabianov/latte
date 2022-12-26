@@ -10,7 +10,7 @@ The package was created with the goal of sharing some common value objects.
 - [ ] DocumentRegistration
 - [ ] ZipCode
 - [ ] IpAddress
-- [ ] Email
+- [x] Email
 - [ ] Json
 - [ ] ExternalCode
 - [ ] ExpiresIn
