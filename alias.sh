@@ -1,3 +1,4 @@
+alias lat='cd \\wsl$\Ubuntu\home\marcelofabianov\DEVELOPER\latte && source alias.sh && clear'
 alias lat.='cat alias.sh'
 alias lat.ip='docker inspect lat_http | grep "IPAddress"'
 alias lat.watch="docker compose up"
@@ -12,3 +13,4 @@ alias lat.lint="lat.php ./vendor/bin/pint"
 alias lat.psalm="lat.php ./vendor/bin/psalm"
 alias lat.pest="lat.php ./vendor/bin/pest"
 alias lat.lpp="lat.lint && lat.psalm && lat.pest"
+alias lat.cover="lat.pest --coverage-clover=coverage.xml"

@@ -37,6 +37,7 @@ $RECYCLE.BIN/
 *.pfx
 *.key
 *.pem
+.env
 /.idea
 /.vscode
 /vendor/

@@ -9,15 +9,16 @@
     "nesbot/carbon": "^2.64"
   },
   "require-dev": {
-    "roave/security-advisories": "dev-latest",
-    "phpunit/phpunit": "^9.5",
-    "pestphp/pest": "^1.22",
     "captainhook/captainhook": "^5.11",
     "ergebnis/composer-normalize": "^2.29",
     "laradumps/laradumps": "^1.5",
     "laravel/pint": "^1.3",
-    "vimeo/psalm": "^4.30",
-    "pyrech/composer-changelogs": "^1.8"
+    "pestphp/pest": "^1.22",
+    "pestphp/pest-plugin-parallel": "^1.2",
+    "phpunit/phpunit": "^9.5",
+    "pyrech/composer-changelogs": "^1.8",
+    "roave/security-advisories": "dev-latest",
+    "vimeo/psalm": "^4.30"
   },
   "autoload": {
     "psr-4": {
