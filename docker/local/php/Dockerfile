@@ -52,7 +52,7 @@ RUN curl -L -C - --progress-bar -o /usr/local/bin/composer https://getcomposer.o
 
 RUN composer self-update
 
-COPY --chown=devs:www-data . /var/www
+COPY --chown=devs:www-data ../.. /var/www
 
 RUN chown -R www-data /var/www
 

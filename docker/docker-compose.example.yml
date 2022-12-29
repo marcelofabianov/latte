@@ -3,7 +3,7 @@ version: '3.7'
 services:
     lat:
         container_name: lat
-        build: ./docker
+        build: ./docker/local/php
         restart: always
         working_dir: /var/www/html
         environment:
@@ -12,8 +12,8 @@ services:
             XDEBUG_MODE: coverage
         volumes:
             - .:/var/www/html
-            - ./docker/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
-            - ./docker/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+            - ./docker/local/php/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+            - ./docker/local/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
         networks:
             - lat_network
         ports:

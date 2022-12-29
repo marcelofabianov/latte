@@ -49,3 +49,4 @@ index.php
 /phpunit.xml
 /build/
 *.cache
+docker-compose.yml

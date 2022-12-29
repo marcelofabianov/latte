@@ -16,3 +16,4 @@ The package was created with the goal of sharing some common value objects.
 - [ ] ExpiresIn
 - [ ] Hostname
 - [ ] FederativeUnit
+- [ ] Phone
