@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Latte;
 
-final class Hostname
+use Latte\Interfaces\GenerateValueObject;
+
+final class Hostname implements GenerateValueObject
 {
     private readonly string $value;
 
@@ -18,7 +20,7 @@ final class Hostname
         return $this->value;
     }
 
-    public function equals(self $other): bool
+    public function equals(GenerateValueObject $other): bool
     {
         return $this->getValue() === $other->getValue();
     }
