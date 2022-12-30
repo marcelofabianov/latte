@@ -39,7 +39,7 @@ final class Email implements ValueObject
         return false;
     }
 
-    public static function create($value): ValueObject
+    public static function create(mixed $value): ValueObject
     {
         if (! is_string($value) || ! self::isValid($value)) {
             throw new \InvalidArgumentException('Invalid Email!');

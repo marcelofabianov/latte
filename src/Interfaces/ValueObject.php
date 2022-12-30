@@ -12,5 +12,5 @@ interface ValueObject
 
     public function __toString();
 
-    public static function create($value): self;
+    public static function create(mixed $value): self;
 }

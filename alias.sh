@@ -1,4 +1,3 @@
-alias lat='cd \\wsl$\Ubuntu\home\marcelofabianov\DEVELOPER\latte && source alias.sh && clear'
 alias lat.='cat alias.sh'
 alias lat.ip='docker inspect lat_http | grep "IPAddress"'
 alias lat.watch="docker compose up"

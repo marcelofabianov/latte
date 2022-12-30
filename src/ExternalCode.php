@@ -8,16 +8,16 @@ use InvalidArgumentException;
 use Latte\Interfaces\ValueObject;
 use Ramsey\Uuid\Uuid;
 
-final class Id implements ValueObject
+final class ExternalCode implements ValueObject
 {
-    private readonly string $value;
+    private readonly string|int $value;
 
-    private function __construct(string $value)
+    private function __construct(string|int $value)
     {
         $this->value = $value;
     }
 
-    public function getValue(): string
+    public function getValue(): string|int
     {
         return $this->value;
     }
@@ -29,12 +29,16 @@ final class Id implements ValueObject
 
     public function __toString(): string
     {
-        return $this->getValue();
+        return (string) $this->getValue();
     }
 
-    public static function isValid(string $value): bool
+    public static function isValid($value): bool
     {
-        return Uuid::isValid($value);
+        if (is_string($value) and Uuid::isValid($value)) {
+            return true;
+        }
+
+        return is_int($value) && $value > 0;
     }
 
     public static function random(): self
@@ -44,8 +48,8 @@ final class Id implements ValueObject
 
     public static function create(mixed $value): self
     {
-        if (! is_string($value) || ! self::isValid($value)) {
-            throw new InvalidArgumentException('Invalid UUID');
+        if (! self::isValid($value)) {
+            throw new InvalidArgumentException($value);
         }
 
         return new self($value);

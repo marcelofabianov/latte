@@ -12,7 +12,7 @@ The package was created with the goal of sharing some common value objects.
 - [ ] IpAddress
 - [x] Email
 - [ ] Json
-- [ ] ExternalCode
+- [x] ExternalCode
 - [ ] ExpiresIn
 - [ ] Hostname
 - [ ] FederativeUnit
