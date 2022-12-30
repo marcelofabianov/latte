@@ -9,7 +9,7 @@ The package was created with the goal of sharing some common value objects.
 - [ ] Cpf
 - [ ] DocumentRegistration
 - [ ] ZipCode
-- [ ] IpAddress
+- [x] IpAddress
 - [x] Email
 - [ ] Json
 - [x] ExternalCode
