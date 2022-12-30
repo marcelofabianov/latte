@@ -14,6 +14,6 @@ The package was created with the goal of sharing some common value objects.
 - [ ] Json
 - [x] ExternalCode
 - [ ] ExpiresIn
-- [ ] Hostname
+- [x] Hostname
 - [ ] FederativeUnit
 - [ ] Phone
