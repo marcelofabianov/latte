@@ -11,7 +11,7 @@ final class Json implements ValueObject
 {
     private readonly array|string $value;
 
-    public function __construct(array|string $value)
+    private function __construct(array|string $value)
     {
         $this->value = $value;
     }

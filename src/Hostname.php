@@ -10,7 +10,7 @@ final class Hostname implements GenerateValueObject
 {
     private readonly string $value;
 
-    public function __construct(string $value)
+    private function __construct(string $value)
     {
         $this->value = $value;
     }
