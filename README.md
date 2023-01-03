@@ -11,7 +11,7 @@ The package was created with the goal of sharing some common value objects.
 - [ ] ZipCode
 - [x] IpAddress
 - [x] Email
-- [ ] Json
+- [x] Json
 - [x] ExternalCode
 - [ ] ExpiresIn
 - [x] Hostname
