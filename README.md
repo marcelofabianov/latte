@@ -15,5 +15,5 @@ The package was created with the goal of sharing some common value objects.
 - [x] ExternalCode
 - [ ] ExpiresIn
 - [x] Hostname
-- [ ] FederativeUnit
+- [x] FederativeUnit
 - [ ] Phone
