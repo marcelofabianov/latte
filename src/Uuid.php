@@ -31,6 +31,11 @@ final class Uuid
         return $this->getValue();
     }
 
+    public function version(): string
+    {
+        return 'UUID Version-4 RFC 4122';
+    }
+
     public static function isValid(string $value): bool
     {
         return RamseyUuid::isValid($value);
