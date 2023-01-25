@@ -3,18 +3,18 @@
     "type": "package",
     "license": "MIT",
     "require": {
-        "php": "^8.1",
+        "php": "8.1.*|8.2.*",
         "ext-json": "*",
         "ramsey/uuid": "^4.7",
-        "nesbot/carbon": "^2.64",
-        "illuminate/support": "^9.45",
-        "illuminate/contracts": "^9.45"
+        "nesbot/carbon": "^2.65",
+        "illuminate/support": "^9.48",
+        "illuminate/contracts": "^9.48"
     },
     "require-dev": {
-        "captainhook/captainhook": "^5.11",
+        "captainhook/captainhook": "^5.13",
         "ergebnis/composer-normalize": "^2.29",
-        "laradumps/laradumps": "^1.5",
-        "laravel/pint": "^1.3",
+        "laradumps/laradumps": "^1.7",
+        "laravel/pint": "^1.4",
         "pestphp/pest": "^1.22",
         "pestphp/pest-plugin-parallel": "^1.2",
         "phpunit/phpunit": "^9.5",
