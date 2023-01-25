@@ -2,7 +2,7 @@
 
 The package was created with the goal of sharing some common value objects.
 
-## Checklist
+## Checklist v1.0.0
 
 - [x] Id
 - [ ] Cnpj

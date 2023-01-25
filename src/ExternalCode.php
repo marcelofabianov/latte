@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace Latte;
 
 use InvalidArgumentException;
-use Latte\Interfaces\ValueObject;
 use Ramsey\Uuid\Uuid;
 
-final class ExternalCode implements ValueObject
+final class ExternalCode
 {
     private readonly string|int $value;
 
@@ -22,7 +21,7 @@ final class ExternalCode implements ValueObject
         return $this->value;
     }
 
-    public function equals(ValueObject $other): bool
+    public function equals(self $other): bool
     {
         return $this->getValue() === $other->getValue();
     }

@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Latte;
 
-use Latte\Interfaces\ValueObject;
-
-final class Email implements ValueObject
+final class Email
 {
     private readonly string $value;
 
@@ -20,7 +18,7 @@ final class Email implements ValueObject
         return $this->value;
     }
 
-    public function equals(ValueObject $other): bool
+    public function equals(self $other): bool
     {
         return $this->getValue() === $other->getValue();
     }
@@ -39,7 +37,7 @@ final class Email implements ValueObject
         return false;
     }
 
-    public static function create(mixed $value): ValueObject
+    public static function create(mixed $value): self
     {
         if (! is_string($value) || ! self::isValid($value)) {
             throw new \InvalidArgumentException('Invalid Email!');

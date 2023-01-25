@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Latte;
 
-use Latte\Interfaces\GenerateValueObject;
+use RuntimeException;
 
-final class Hostname implements GenerateValueObject
+final class Hostname
 {
     private readonly string $value;
 
@@ -20,7 +20,7 @@ final class Hostname implements GenerateValueObject
         return $this->value;
     }
 
-    public function equals(GenerateValueObject $other): bool
+    public function equals(self $other): bool
     {
         return $this->getValue() === $other->getValue();
     }
@@ -34,10 +34,6 @@ final class Hostname implements GenerateValueObject
     {
         $hostname = gethostname();
 
-        if (! $hostname) {
-            throw new \RuntimeException('Invalid Hostname');
-        }
-
-        return new self($hostname);
+        return ! $hostname ? throw new RuntimeException('Invalid Hostname') : new self($hostname);
     }
 }

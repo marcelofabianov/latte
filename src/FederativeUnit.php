@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Latte;
 
-use Latte\Interfaces\ValueObject;
+use InvalidArgumentException;
 
-final class FederativeUnit implements ValueObject
+final class FederativeUnit
 {
     private static array $cases = [
         'AC' => 'Acre',
@@ -43,7 +43,7 @@ final class FederativeUnit implements ValueObject
         return $this->value;
     }
 
-    public function equals(ValueObject $other): bool
+    public function equals(self $other): bool
     {
         return $this->getValue() === $other->getValue();
     }
@@ -66,11 +66,11 @@ final class FederativeUnit implements ValueObject
     public static function create(mixed $value): self
     {
         if (! is_string($value)) {
-            throw new \InvalidArgumentException('Unsupported argument type');
+            throw new InvalidArgumentException('Unsupported argument type');
         }
 
         if (! self::isValid($value)) {
-            throw new \InvalidArgumentException('FederativeUnit invalid!');
+            throw new InvalidArgumentException('FederativeUnit invalid!');
         }
 
         return new self($value);

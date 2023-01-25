@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Latte;
 
-use Latte\Interfaces\ValueObject;
-
-final class ExternalIpAddress implements ValueObject
+final class ExternalIpAddress
 {
     private readonly string $value;
 
@@ -20,7 +18,7 @@ final class ExternalIpAddress implements ValueObject
         return $this->value;
     }
 
-    public function equals(ValueObject $other): bool
+    public function equals(self $other): bool
     {
         return $this->getValue() === $other->getValue();
     }

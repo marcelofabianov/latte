@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Latte;
 
-use Latte\Interfaces\ValueObject;
+use InvalidArgumentException;
 use stdClass;
 
-final class Json implements ValueObject
+final class Json
 {
     private readonly array|string $value;
 
@@ -21,7 +21,7 @@ final class Json implements ValueObject
         return $this->value;
     }
 
-    public function equals(ValueObject $other): bool
+    public function equals(self $other): bool
     {
         return $this->getValue() === $other->getValue();
     }
@@ -56,7 +56,7 @@ final class Json implements ValueObject
     public static function create(mixed $value): self
     {
         if (! is_string($value) and ! is_array($value)) {
-            throw new \InvalidArgumentException('Unsupported argument type');
+            throw new InvalidArgumentException('Unsupported argument type');
         }
 
         return new self($value);
