@@ -33,6 +33,12 @@ final class ExternalCode
 
     public static function isValid($value): bool
     {
+        $numeric = (int) $value;
+
+        if ($numeric > 0) {
+            return true;
+        }
+
         if (is_string($value) and Uuid::isValid($value)) {
             return true;
         }
