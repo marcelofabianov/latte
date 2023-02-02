@@ -5,10 +5,10 @@
     "require": {
         "php": "8.1.*|8.2.*",
         "ext-json": "*",
-        "ramsey/uuid": "^4.7",
-        "nesbot/carbon": "^2.65",
+        "illuminate/contracts": "^9.50",
         "illuminate/support": "^9.48",
-        "illuminate/contracts": "^9.48"
+        "nesbot/carbon": "^2.65",
+        "ramsey/uuid": "^4.7"
     },
     "require-dev": {
         "captainhook/captainhook": "^5.13",
