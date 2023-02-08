@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Latte;
 
 use InvalidArgumentException;
@@ -68,7 +70,7 @@ final class NFeKey
     ];
 
     private static array $months = [
-        '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'
+        '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12',
     ];
 
     private static $message = '';
@@ -125,7 +127,7 @@ final class NFeKey
 
     public static function decode(string $value): array
     {
-        $value = preg_replace("/[^0-9]/", "", $value);
+        $value = preg_replace('/[^0-9]/', '', $value);
 
         $key['cUF'] = substr($value, self::$characterPosition['cUF'][0], self::$characterPosition['cUF'][1]);
         $key['YYMM'] = substr($value, self::$characterPosition['YYMM'][0], self::$characterPosition['YYMM'][1]);
@@ -143,7 +145,7 @@ final class NFeKey
     public static function random(): self
     {
         $key['cUF'] = array_keys(self::$federativeUnitCodes)[random_int(0, count(self::$federativeUnitCodes))];
-        $key['YYMM'] = random_int(15, date('Y')).random_int(1,12);
+        $key['YYMM'] = random_int(15, date('Y')).random_int(1, 12);
         $key['emitter'] = Cnpj::random()->numbers();
         $key['model'] = 55;
         $key['series'] = random_int(1, 999);
@@ -153,7 +155,7 @@ final class NFeKey
 
         $module = bcmod(implode('', $key), '97');
         if ($module < 10) {
-            $module = '0' . $module;
+            $module = '0'.$module;
         }
 
         return self::create(implode('', $key).$module);
@@ -165,13 +167,15 @@ final class NFeKey
 
         if ($year <= 0) {
             self::$message = 'Ano';
+
             return false;
         }
 
         $month = substr($key['YYMM'], 2, 2);
 
-        if (!in_array($month, self::$months, true)) {
+        if (! in_array($month, self::$months, true)) {
             self::$message = 'Mês';
+
             return false;
         }
 
@@ -180,40 +184,46 @@ final class NFeKey
 
     protected static function validEmitter(array $key): bool
     {
-        return !Cnpj::isValid($key['emitter']) or !Cpf::isValid(substr($key['emitter'], 3, 11));
+        return ! Cnpj::isValid($key['emitter']) or ! Cpf::isValid(substr($key['emitter'], 3, 11));
     }
 
     public static function isValid(string $value): bool
     {
         if (strlen($value) !== self::$characterLimit) {
             self::$message = 'Quantidade Caracter';
+
             return false;
         }
 
         $key = self::decode($value);
 
-        if (!array_key_exists($key['cUF'], self::$federativeUnitCodes)) {
+        if (! array_key_exists($key['cUF'], self::$federativeUnitCodes)) {
             self::$message = 'cUF';
+
             return false;
         }
 
-        if (!self::validYearMonth($key)) {
+        if (! self::validYearMonth($key)) {
             self::$message = 'Ano e Mes';
+
             return false;
         }
 
-        if (!self::validEmitter($key)) {
+        if (! self::validEmitter($key)) {
             self::$message = 'Emitente';
+
             return false;
         }
 
-        if (!array_key_exists($key['typeEmission'], self::$typeEmissions)) {
+        if (! array_key_exists($key['typeEmission'], self::$typeEmissions)) {
             self::$message = 'tipo de emissão';
+
             return false;
         }
 
         if ($key['series'] < 1 or $key['series'] > 999) {
             self::$message = 'Serie';
+
             return false;
         }
 
@@ -222,7 +232,7 @@ final class NFeKey
 
     public static function create(string $value): self
     {
-        if (!self::isValid($value)) {
+        if (! self::isValid($value)) {
             throw new InvalidArgumentException('Invalid NFe Key! '.self::$message);
         }
 

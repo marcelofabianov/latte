@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Latte\NFeKey;
 
 it('should return instance valid key')
