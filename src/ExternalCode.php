@@ -33,6 +33,10 @@ final class ExternalCode
 
     public static function isValid($value): bool
     {
+        if (is_float($value)) {
+            return false;
+        }
+
         $numeric = (int) $value;
 
         if ($numeric > 0) {
