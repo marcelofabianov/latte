@@ -1,6 +1,17 @@
 # Latte
 
-The package was created with the goal of sharing some common value objects.
+This package is a PHP library that can be installed via composer. 
+It provides a set of value objects that can be used in various 
+applications. The aim of this package is to simplify the process of 
+with value objects and to ensure that they are used consistently throughout the codebase.
+
+## Install
+
+To install this package in your project, use the following composer command:
+
+```bash
+composer require marcelofabianov/latte
+```
 
 ## Checklist v1.1.0
 
