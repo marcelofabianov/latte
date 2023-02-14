@@ -57,3 +57,14 @@ it('should generate a valid CNPJ', function () {
     expect(Cnpj::isValid($cnpj->format()))
         ->toBeTrue();
 });
+
+it('should return true when both instances of Cnpj are equal')
+    ->expect(
+        Cnpj::create('21452390000100')
+            ->equals(Cnpj::create('21452390000100'))
+    )
+    ->toBeTrue();
+
+it('should return a string when prompted for display')
+    ->expect((string) Cnpj::create('21452390000100'))
+    ->toBe('21452390000100');

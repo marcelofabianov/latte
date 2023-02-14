@@ -27,6 +27,16 @@ final class RegistrationDocument
         return $this->value->format();
     }
 
+    public function equals(self $other): bool
+    {
+        return $this->numbers() === $other->numbers();
+    }
+
+    public function __toString(): string
+    {
+        return $this->numbers();
+    }
+
     public function type(): string
     {
         return $this->value::type();

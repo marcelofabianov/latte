@@ -55,3 +55,14 @@ it('should generate a valid CPF', function () {
     $cpf = Cpf::random();
     expect(Cpf::isValid($cpf->format()))->toBeTrue();
 });
+
+it('should return true when both instances of Cpf are equal')
+    ->expect(
+        Cpf::create('03900520003')
+            ->equals(Cpf::create('03900520003'))
+    )
+    ->toBeTrue();
+
+it('should return a string when prompted for display')
+    ->expect((string) Cpf::create('03900520003'))
+    ->toBe('03900520003');

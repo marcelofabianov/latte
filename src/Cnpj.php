@@ -27,6 +27,16 @@ final class Cnpj implements IRegistrationDocument
         return ApplyMask::custom($this->value, '##.###.###/####-##');
     }
 
+    public function equals(IRegistrationDocument $other): bool
+    {
+        return $this->numbers() === $other->numbers();
+    }
+
+    public function __toString(): string
+    {
+        return $this->numbers();
+    }
+
     public static function isValid(string $value): bool
     {
         $doc = self::sanitize($value);
