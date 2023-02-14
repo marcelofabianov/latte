@@ -14,7 +14,7 @@ interface IRegistrationDocument
 
     public static function random(): self;
 
-    public function equals(IRegistrationDocument $other): bool;
+    public function equals(self $other): bool;
 
     public function __toString(): string;
 }

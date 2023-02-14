@@ -145,7 +145,7 @@ final class NFeKey
     public static function random(): self
     {
         $key['cUF'] = array_keys(self::$federativeUnitCodes)[random_int(0, count(self::$federativeUnitCodes))];
-        $key['YYMM'] = random_int(15, (int)date('Y')).random_int(1, 12);
+        $key['YYMM'] = random_int(15, (int) date('Y')).random_int(1, 12);
         $key['emitter'] = Cnpj::random()->numbers();
         $key['model'] = 55;
         $key['series'] = random_int(1, 999);

@@ -10,3 +10,15 @@ it('should return instance valid key')
     ->toBeInstanceOf(NFeKey::class)
     ->and(NFeKey::isValid('51180662182092000559550010000230361312086413'))
     ->toBeTrue();
+
+it('should return true when both instances of NFeKey are equal')
+    ->group('NFeKey')
+    ->expect(
+        NFeKey::create('51180662182092000559550010000230361312086413')
+        ->equals(NFeKey::create('51180662182092000559550010000230361312086413'))
+    )->toBeTrue();
+
+it('should return a string when prompted for display')
+    ->group('NFeKey')
+    ->expect((string) NFeKey::create('51180662182092000559550010000230361312086413'))
+    ->toBe('51180662182092000559550010000230361312086413');
