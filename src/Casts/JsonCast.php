@@ -16,6 +16,10 @@ final class JsonCast implements CastsAttributes
             return $value;
         }
 
+        if (is_null($value)) {
+            return null;
+        }
+
         if (! is_array($value) and ! is_string($value)) {
             throw new InvalidArgumentException('Argument type not support');
         }
@@ -27,6 +31,10 @@ final class JsonCast implements CastsAttributes
     {
         if (is_a($value, Json::class)) {
             return $value->encode();
+        }
+
+        if (is_null($value)) {
+            return null;
         }
 
         if (! is_array($value) and ! is_string($value)) {
