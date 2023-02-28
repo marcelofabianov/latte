@@ -144,21 +144,20 @@ final class NFeKey
 
     public static function random(): self
     {
-        $key['cUF'] = array_keys(self::$federativeUnitCodes)[random_int(0, count(self::$federativeUnitCodes))];
-        $key['YYMM'] = random_int(15, (int) date('Y')).random_int(1, 12);
+        $key['cUF'] = array_keys(self::$federativeUnitCodes)[random_int(0, 26)];
+        $key['YYMM'] = date('y').self::$months[random_int(0, 11)];
         $key['emitter'] = Cnpj::random()->numbers();
         $key['model'] = 55;
-        $key['series'] = random_int(1, 999);
+        $key['series'] = random_int(100, 999);
         $key['numbers'] = random_int(111111111, 333333333);
         $key['typeEmission'] = random_int(1, 7);
         $key['codeNumeric'] = random_int(11111111, 33333333);
+        $key['dv'] = 1;
 
-        $module = bcmod(implode('', $key), '97');
-        if ($module < 10) {
-            $module = '0'.$module;
-        }
+        var_dump($key);
+        var_dump(implode('', $key));
 
-        return self::create(implode('', $key).$module);
+        return self::create(implode('', $key));
     }
 
     protected static function validYearMonth(array $key): bool
@@ -166,16 +165,12 @@ final class NFeKey
         $year = (int) substr($key['YYMM'], 0, 2);
 
         if ($year <= 0) {
-            self::$message = 'Ano';
-
             return false;
         }
 
         $month = substr($key['YYMM'], 2, 2);
 
         if (! in_array($month, self::$months, true)) {
-            self::$message = 'Mês';
-
             return false;
         }
 
@@ -184,13 +179,21 @@ final class NFeKey
 
     protected static function validEmitter(array $key): bool
     {
-        return ! Cnpj::isValid($key['emitter']) or ! Cpf::isValid(substr($key['emitter'], 3, 11));
+        if (Cnpj::isValid($key['emitter'])) {
+            return true;
+        }
+        if (Cpf::isValid(substr($key['emitter'], 3, 11))) {
+            return true;
+        }
+
+        return false;
     }
 
     public static function isValid(string $value): bool
     {
         if (strlen($value) !== self::$characterLimit) {
-            self::$message = 'Quantidade Caracter';
+            var_dump($value);
+            self::$message = 'Should contain 44 characters';
 
             return false;
         }
@@ -198,31 +201,31 @@ final class NFeKey
         $key = self::decode($value);
 
         if (! array_key_exists($key['cUF'], self::$federativeUnitCodes)) {
-            self::$message = 'cUF';
+            self::$message = 'cUF invalid';
 
             return false;
         }
 
         if (! self::validYearMonth($key)) {
-            self::$message = 'Ano e Mes';
+            self::$message = 'Year or Month invalid';
 
             return false;
         }
 
         if (! self::validEmitter($key)) {
-            self::$message = 'Emitente';
+            self::$message = 'Emitter invalid';
 
             return false;
         }
 
         if (! array_key_exists($key['typeEmission'], self::$typeEmissions)) {
-            self::$message = 'tipo de emissão';
+            self::$message = 'Type emission invalid';
 
             return false;
         }
 
         if ($key['series'] < 1 or $key['series'] > 999) {
-            self::$message = 'Serie';
+            self::$message = 'Series invalid';
 
             return false;
         }

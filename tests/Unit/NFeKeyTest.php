@@ -22,3 +22,8 @@ it('should return a string when prompted for display')
     ->group('NFeKey')
     ->expect((string) NFeKey::create('51180662182092000559550010000230361312086413'))
     ->toBe('51180662182092000559550010000230361312086413');
+
+it('should generate a valid random key')
+    ->group('NFeKey')
+    ->expect(NFeKey::isValid(NFeKey::random()->numbers()))
+    ->toBeTrue();

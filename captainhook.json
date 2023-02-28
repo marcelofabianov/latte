@@ -1,4 +1,8 @@
 {
+    "config": {
+        "run-mode": "docker",
+        "run-exec": "docker exec lat"
+    },
     "commit-msg": {
         "enabled": false,
         "actions": []
