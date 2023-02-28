@@ -154,9 +154,6 @@ final class NFeKey
         $key['codeNumeric'] = random_int(11111111, 33333333);
         $key['dv'] = 1;
 
-        var_dump($key);
-        var_dump(implode('', $key));
-
         return self::create(implode('', $key));
     }
 
@@ -192,7 +189,6 @@ final class NFeKey
     public static function isValid(string $value): bool
     {
         if (strlen($value) !== self::$characterLimit) {
-            var_dump($value);
             self::$message = 'Should contain 44 characters';
 
             return false;
