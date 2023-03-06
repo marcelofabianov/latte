@@ -63,6 +63,14 @@ final class FederativeUnit
         return $this->value;
     }
 
+    public static function random(): self
+    {
+        $keys = array_keys(self::$cases);
+        $selected = $keys[random_int(0, count($keys))];
+
+        return new self($selected);
+    }
+
     public static function create(mixed $value): self
     {
         if (! is_string($value)) {

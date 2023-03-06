@@ -27,3 +27,9 @@ it('should return the full name of the federal unit')
 it('should return the abbreviation of a federal unit.')
     ->expect(FederativeUnit::create('MG')->initials())
     ->toEqual('MG');
+
+it('should return random federal unit.')
+    ->expect(FederativeUnit::random())
+    ->toBeInstanceOf(FederativeUnit::class)
+    ->and(FederativeUnit::isValid(FederativeUnit::random()->initials()))
+    ->toBeTrue();
