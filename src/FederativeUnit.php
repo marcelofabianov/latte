@@ -78,7 +78,11 @@ final class FederativeUnit
     public static function random(): self
     {
         $keys = array_keys(self::$cases);
-        $selected = $keys[random_int(0, count($keys))];
+
+        $selected = $keys[0];
+        if (isset($keys[random_int(0, count($keys))])) {
+            $selected = $keys[random_int(0, count($keys))];
+        }
 
         return new self($selected);
     }
