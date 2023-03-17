@@ -24,6 +24,6 @@ final class NFeKeyCast implements CastsAttributes
             return $value->getValue();
         }
 
-        return NFeKey::create($value)->getValue();
+        return NFeKey::create($value)->numbers();
     }
 }
