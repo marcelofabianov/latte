@@ -35,7 +35,7 @@ final class FederativeUnit
         'SC' => 'Santa Catarina',
         'SP' => 'São Paulo',
         'SE' => 'Sergipe',
-        'TO' => 'Tocantins'
+        'TO' => 'Tocantins',
     ];
 
     private readonly string $value;
