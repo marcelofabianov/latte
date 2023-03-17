@@ -11,6 +11,10 @@ final class ExternalCodeCast implements CastsAttributes
 {
     public function get($model, string $key, $value, array $attributes)
     {
+        if (is_null($value)) {
+            return null;
+        }
+
         if (is_a($value, ExternalCode::class)) {
             return $value;
         }
@@ -20,6 +24,10 @@ final class ExternalCodeCast implements CastsAttributes
 
     public function set($model, string $key, $value, array $attributes)
     {
+        if (is_null($value)) {
+            return null;
+        }
+
         if (is_a($value, ExternalCode::class)) {
             return $value->getValue();
         }
