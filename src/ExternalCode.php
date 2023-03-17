@@ -50,8 +50,12 @@ final class ExternalCode
         return is_int($value) && $value > 0;
     }
 
-    public static function random(): self
+    public static function random(bool $number = false): self
     {
+        if ($number) {
+            return new self(random_int(1, 100));
+        }
+
         return new self((string) Uuid::uuid4());
     }
 

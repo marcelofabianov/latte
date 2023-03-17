@@ -34,6 +34,12 @@ it('should generate a randomly valid ExternalCode')
     ->and(ExternalCode::isValid(ExternalCode::random()->getValue()))
     ->toBeTrue();
 
+it('should generate a randomly number valid ExternalCode')
+    ->expect(ExternalCode::random(true))
+    ->toBeInstanceOf(ExternalCode::class)
+    ->and(ExternalCode::isValid(ExternalCode::random(true)->getValue()))
+    ->toBeTrue();
+
 it('should return true when both ExternalCodes are equal')
     ->expect((ExternalCode::create(111))->equals(ExternalCode::create(111)))
     ->toBeTrue();
