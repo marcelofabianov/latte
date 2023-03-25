@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Latte;
 
 use InvalidArgumentException;
+use JsonException;
 use stdClass;
 
 final class Json
@@ -26,25 +27,26 @@ final class Json
         return $this->getValue() === $other->getValue();
     }
 
+    /**
+     * @throws JsonException
+     */
     public function __toString(): string
     {
-        if (is_array($this->value)) {
-            return $this->encode();
-        }
-
-        return $this->getValue();
+        return json_encode($this->value, JSON_THROW_ON_ERROR);
     }
 
+    /**
+     * @throws JsonException
+     */
     public function encode(): string|bool
     {
-        if (is_array($this->value)) {
-            return json_encode($this->value, JSON_THROW_ON_ERROR);
-        }
-
-        return false;
+        return json_encode($this->value, JSON_THROW_ON_ERROR);
     }
 
-    public function decode(): stdClass|array|bool
+    /**
+     * @throws JsonException
+     */
+    public function decode(): stdClass|bool
     {
         if (is_string($this->value)) {
             return json_decode($this->value, false, 512, JSON_THROW_ON_ERROR);
