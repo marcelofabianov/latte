@@ -46,7 +46,7 @@ final class Json
     /**
      * @throws JsonException
      */
-    public function decode(): stdClass|bool
+    public function decode(): stdClass|array|bool
     {
         $result = null;
         if (is_string($this->value)) {
@@ -54,6 +54,7 @@ final class Json
             if (is_string($result)) {
                 $result = json_decode($result, false, 512, JSON_THROW_ON_ERROR);
             }
+
             return $result;
         }
 
