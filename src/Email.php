@@ -43,6 +43,6 @@ final class Email
             throw new \InvalidArgumentException('Invalid Email!');
         }
 
-        return new self($value);
+        return new self(mb_strtolower($value, 'UTF-8'));
     }
 }
