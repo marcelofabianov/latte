@@ -6,7 +6,7 @@ namespace Latte;
 
 use JsonSerializable;
 
-final class Money implements JsonSerializable
+final class Monetary implements JsonSerializable
 {
     private readonly float $value;
 

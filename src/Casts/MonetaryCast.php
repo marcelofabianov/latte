@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace Latte\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
-use Latte\Money;
+use Latte\Monetary;
 
-final class MoneyCast implements CastsAttributes
+final class MonetaryCast implements CastsAttributes
 {
     public function get($model, string $key, $value, array $attributes)
     {
-        if (is_a($value, Money::class)) {
+        if (is_a($value, Monetary::class)) {
             return $value;
         }
 
-        return Money::create($value);
+        return Monetary::create($value);
     }
 
     public function set($model, string $key, $value, array $attributes)
     {
-        if (is_a($value, Money::class)) {
+        if (is_a($value, Monetary::class)) {
             return $value->getValue();
         }
 
-        return Money::create($value)->getValue();
+        return Monetary::create($value)->getValue();
     }
 }
