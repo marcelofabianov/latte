@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Latte\Helpers;
 
 final class StrSanitizer
@@ -13,8 +15,7 @@ final class StrSanitizer
         );
 
         $regex = '/[^a-zA-Z0-9]/';
+
         return preg_replace($regex, '', $str);
     }
-
-
 }

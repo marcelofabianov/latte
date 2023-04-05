@@ -46,4 +46,4 @@ composer require marcelofabianov/latte
 **Helpers**
 
 - [x] StrSanitizer (Helper)
-- [ ] NumericDecimalSanitizer (Helper)
+- [x] NumericDecimalSanitizer (Helper)
