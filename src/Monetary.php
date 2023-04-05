@@ -48,6 +48,15 @@ final class Monetary implements JsonSerializable
 
     public static function create(float|string|int $value, string $currency = 'BRL'): self
     {
+        // 1.000,00
+        if (is_string($value) && str_contains($value, ',') && str_contains($value, '.')) {
+            $value = str_replace(['.', ','], ['', '.'], $value);
+        }
+        // 1000,00
+        if (is_string($value) && str_contains($value, ',') && str_contains($value, '.') === false) {
+            $value = str_replace(',', '.', $value);
+        }
+
         return new self((float) $value, $currency);
     }
 }

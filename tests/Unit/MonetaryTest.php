@@ -73,3 +73,19 @@ it('Should receive integer "0" and return float 0.0')
 it('Should receive string "0" and return float 0.0')
     ->expect(Monetary::create('0')->getValue())
     ->toBe(0.0);
+
+it('Should receive a monetary value with a comma and return a float')
+    ->expect(Monetary::create('10,34', 'BRL')->getValue())
+    ->toBe(10.34);
+
+it('Should correctly convert a monetary value with comma decimal separator to a float')
+    ->expect(Monetary::create('1000,34', 'BRL')->getValue())
+    ->toBe(1000.34);
+
+it('Should receive a monetary value with comma as decimal separator and period as thousand separator and return a float')
+    ->expect(Monetary::create('1.000,34', 'BRL')->getValue())
+    ->toBe(1000.34);
+
+it('Should correctly convert a monetary value with comma decimal separator and period thousand separator to a float')
+    ->expect(Monetary::create('1.000.000,34', 'BRL')->getValue())
+    ->toBe(1000000.34);
