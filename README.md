@@ -14,6 +14,8 @@ composer require marcelofabianov/latte
 ```
 ### Features
 
+**ValueObject**
+
 - [x] Uuid
 - [x] Cnpj
 - [x] Cpf
@@ -26,14 +28,22 @@ composer require marcelofabianov/latte
 - [x] Hostname
 - [x] FederativeUnit
 - [x] NFeKey
+- [x] Money
+- [ ] CTeKey
+- [ ] ZipCode
+- [ ] Phone
+- [ ] ExpiresIn
+
+**Laravel Cast**
+
 - [x] NFeKeyCast
 - [x] ExternalCodeCast
 - [x] JsonCast
 - [x] RegistrationDocumentCast
 - [x] UuidCast
 - [x] EmailCast
-- [x] Money
-- [ ] CTeKey
-- [ ] ZipCode
-- [ ] Phone
-- [ ] ExpiresIn
+
+**Helpers**
+
+- [x] StrSanitizer (Helper)
+- [ ] NumericDecimalSanitizer (Helper)
