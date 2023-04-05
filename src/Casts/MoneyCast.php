@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace Latte\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
-use Latte\NFeKey;
+use Latte\Money;
 
-final class NFeKeyCast implements CastsAttributes
+final class MoneyCast implements CastsAttributes
 {
     public function get($model, string $key, $value, array $attributes)
     {
-        if (is_a($value, NFeKey::class)) {
+        if (is_a($value, Money::class)) {
             return $value;
         }
 
-        return NFeKey::create($value);
+        return Money::create($value);
     }
 
     public function set($model, string $key, $value, array $attributes)
     {
-        if (is_a($value, NFeKey::class)) {
-            return $value->numbers();
+        if (is_a($value, Money::class)) {
+            return $value->getValue();
         }
 
-        return NFeKey::create($value)->numbers();
+        return Money::create($value)->getValue();
     }
 }

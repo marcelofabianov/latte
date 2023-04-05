@@ -12,8 +12,7 @@ To install this package in your project, use the following composer command:
 ```bash
 composer require marcelofabianov/latte
 ```
-
-## Checklist v1.1.0
+### Features
 
 - [x] Uuid
 - [x] Cnpj
@@ -26,9 +25,6 @@ composer require marcelofabianov/latte
 - [x] ExternalCode
 - [x] Hostname
 - [x] FederativeUnit
-
-## Checklist v1.2.0
-
 - [x] NFeKey
 - [x] NFeKeyCast
 - [x] ExternalCodeCast
@@ -36,9 +32,7 @@ composer require marcelofabianov/latte
 - [x] RegistrationDocumentCast
 - [x] UuidCast
 - [x] EmailCast
-
-## Checklist v1.3.0
-
+- [x] Money
 - [ ] CTeKey
 - [ ] ZipCode
 - [ ] Phone
