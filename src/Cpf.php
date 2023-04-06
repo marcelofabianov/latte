@@ -6,6 +6,7 @@ namespace Latte;
 
 use InvalidArgumentException;
 use Latte\Enums\RegistrationDocumentEnum;
+use Latte\Helpers\ApplyMask;
 use Latte\Interfaces\IRegistrationDocument;
 
 final class Cpf implements IRegistrationDocument

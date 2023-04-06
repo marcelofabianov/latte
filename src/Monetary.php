@@ -46,6 +46,14 @@ final class Monetary implements JsonSerializable
         return $this->value === $money->getValue() and $this->currency === $money->getCurrency();
     }
 
+    public static function random(): self
+    {
+        return new self(
+            value: 0.1 + mt_rand() / mt_getrandmax() * (5.1 - 0.1),
+            currency: 'BRL',
+        );
+    }
+
     public static function create(float|string|int $value, string $currency = 'BRL'): self
     {
         // 1.000,00
