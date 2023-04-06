@@ -21,9 +21,9 @@ final class MonetaryCast implements CastsAttributes
     public function set($model, string $key, $value, array $attributes)
     {
         if (is_a($value, Monetary::class)) {
-            return $value->getValue();
+            return $value->getDecimal();
         }
 
-        return Monetary::create($value)->getValue();
+        return Monetary::create($value)->getDecimal();
     }
 }
