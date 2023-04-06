@@ -112,3 +112,22 @@ it('Should receive monetary instance with random float value')
     ->toBeInstanceOf(Monetary::class)
     ->and(Monetary::random()->getValue())
     ->toBeFloat();
+
+it('Should return a string with 2 decimal places when given a float or integer')
+    ->expect(Monetary::create(10)->getDecimal())
+    ->toBeString()
+    ->toBe('10.00')
+    ->and(Monetary::create(10.0)->getDecimal())
+    ->toBeString()
+    ->toBe('10.00')
+    ->and(Monetary::create(10.4)->getDecimal())
+    ->toBeString()
+    ->toBe('10.40');
+
+it('Should return a formatted string for monetary value according to the BRL currency standard')
+    ->expect(Monetary::create(10)->getFormat())
+    ->toBeString()
+    ->toBe('10,00')
+    ->and(Monetary::create(10.4)->getFormat())
+    ->toBeString()
+    ->toBe('10,40');

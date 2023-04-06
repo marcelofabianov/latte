@@ -18,9 +18,19 @@ final class Monetary implements JsonSerializable
         $this->currency = $currency;
     }
 
+    public function getFormat(string $decimalSeparator = ',', string $thousandsSeparator = '.'): string
+    {
+        return number_format($this->value, 2, $decimalSeparator, $thousandsSeparator);
+    }
+
+    public function getDecimal(): string
+    {
+        return number_format($this->value, 2, '.', '');
+    }
+
     public function getValue(): float
     {
-        return $this->value;
+        return (float) $this->getDecimal();
     }
 
     public function getCurrency(): string
