@@ -28,7 +28,7 @@ composer require marcelofabianov/latte
 - [x] Hostname
 - [x] FederativeUnit
 - [x] NFeKey
-- [x] Money
+- [x] Monetary
 - [ ] CTeKey
 - [ ] ZipCode
 - [ ] Phone
@@ -42,8 +42,10 @@ composer require marcelofabianov/latte
 - [x] RegistrationDocumentCast
 - [x] UuidCast
 - [x] EmailCast
+- [x] MonetaryCast
 
 **Helpers**
 
 - [x] StrSanitizer (Helper)
 - [x] NumericDecimalSanitizer (Helper)
+- [x] Debug (Helper)

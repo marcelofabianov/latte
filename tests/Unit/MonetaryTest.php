@@ -4,26 +4,26 @@ declare(strict_types=1);
 
 use Latte\Monetary;
 
-it('Should return an instance of Money')
+it('Should return an instance of Monetary')
     ->expect(Monetary::create(10.34))
     ->toBeInstanceOf(Monetary::class);
 
-it('Should return the value of Money')
+it('Should return the value of Monetary')
     ->expect(Monetary::create(10.00)->getValue())
     ->toBeFloat()
     ->toBe(10.00);
 
-it('Should return the currency of Money')
+it('Should return the currency of Monetary')
     ->expect(Monetary::create(10.00)->getCurrency())
     ->toBeString()
     ->toBe('BRL');
 
-it('Should return an instance of Money in string format')
+it('Should return an instance of Monetary in string format')
     ->expect((string) Monetary::create(10.00))
     ->toBeString()
     ->toBe('10 BRL');
 
-it('Should return an instance of Money in array format')
+it('Should return an instance of Monetary in array format')
     ->expect(Monetary::create(10.00)->jsonSerialize())
     ->toBeArray()
     ->toBe([
@@ -31,7 +31,7 @@ it('Should return an instance of Money in array format')
         'currency' => 'BRL',
     ]);
 
-it('Should compare two instances of Money')
+it('Should compare two instances of Monetary')
     ->expect(
         Monetary::create(10.00)
             ->toEquals(Monetary::create(10.00))
@@ -131,3 +131,16 @@ it('Should return a formatted string for monetary value according to the BRL cur
     ->and(Monetary::create(10.4)->getFormat())
     ->toBeString()
     ->toBe('10,40');
+
+it('Should return a valid json string with value rounded to 2 decimal places and currency when forcing a json_encode')
+    ->expect(json_encode(Monetary::create(10.54), JSON_THROW_ON_ERROR))
+    ->toBe('{"value":10.54,"currency":"BRL"}');
+
+it('Should create a Monetary instance from an object with properties value and currency')
+    ->expect(Monetary::create((object) ['value' => 10.54, 'currency' => 'USD']))
+    ->toBeInstanceOf(Monetary::class)
+    ->and(Monetary::create((object) ['value' => 10.54, 'currency' => 'USD'])->getValue())
+    ->toBeFloat()
+    ->toBe(10.54)
+    ->and(Monetary::create((object) ['value' => 10.54, 'currency' => 'USD'])->getCurrency())
+    ->toBe('USD');

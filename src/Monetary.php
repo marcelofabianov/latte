@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Latte;
 
+use InvalidArgumentException;
 use JsonSerializable;
+use stdClass;
 
 final class Monetary implements JsonSerializable
 {
@@ -46,7 +48,7 @@ final class Monetary implements JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'value' => $this->value,
+            'value' => $this->getValue(),
             'currency' => $this->currency,
         ];
     }
@@ -64,8 +66,17 @@ final class Monetary implements JsonSerializable
         );
     }
 
-    public static function create(float|string|int $value, string $currency = 'BRL'): self
+    public static function create(float|string|int|stdClass $value, string $currency = 'BRL'): self
     {
+        // {value: 1000, currency: 'BRL'}
+        if ($value instanceof stdClass) {
+            if (! isset($value->value) && ! isset($value->currency)) {
+                throw new InvalidArgumentException('Invalid object');
+            }
+            $currency = is_string($value->currency) ? $value->currency : $currency;
+            $value = (float) $value->value;
+        }
+
         // 1.000,00
         if (is_string($value) && str_contains($value, ',') && str_contains($value, '.')) {
             $value = str_replace(['.', ','], ['', '.'], $value);

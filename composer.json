@@ -24,7 +24,10 @@
     "autoload": {
         "psr-4": {
             "Latte\\": "src/"
-        }
+        },
+        "files": [
+            "src/Helpers/debug.php"
+        ]
     },
     "config": {
         "optimize-autoloader": true,
