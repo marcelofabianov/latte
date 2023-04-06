@@ -16,7 +16,7 @@ final class Monetary implements JsonSerializable
 
     public function __construct(float $value, string $currency)
     {
-        $this->value = $value;
+        $this->value = (float) number_format($value, 2, '.', '');
         $this->currency = $currency;
     }
 
