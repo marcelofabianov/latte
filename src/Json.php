@@ -48,7 +48,6 @@ final class Json
      */
     public function decode(): stdClass|array|bool
     {
-        $result = null;
         if (is_string($this->value)) {
             $result = json_decode($this->value, false, 512, JSON_THROW_ON_ERROR);
             if (is_string($result)) {

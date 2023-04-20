@@ -86,6 +86,16 @@ final class Monetary implements JsonSerializable
             $value = str_replace(',', '.', $value);
         }
 
-        return new self((float) $value, $currency);
+        if (is_int($value) && $value === 0) {
+            $value = 0.00;
+        }
+
+        try {
+            $monetary = new self((float) $value, $currency);
+        } catch (InvalidArgumentException) {
+            throw new InvalidArgumentException('Invalid monetary value');
+        }
+
+        return $monetary;
     }
 }
