@@ -14,6 +14,8 @@ composer require marcelofabianov/latte
 ```
 ### Features
 
+Current version: v1.4.9
+
 **ValueObject**
 
 - [x] Uuid
@@ -29,7 +31,7 @@ composer require marcelofabianov/latte
 - [x] FederativeUnit
 - [x] NFeKey
 - [x] Monetary
-- [ ] CTeKey
+- [x] CTeKey
 - [ ] ZipCode
 - [ ] Phone
 - [ ] ExpiresIn
@@ -37,6 +39,7 @@ composer require marcelofabianov/latte
 **Laravel Cast**
 
 - [x] NFeKeyCast
+- [x] CTeKeyCast
 - [x] ExternalCodeCast
 - [x] JsonCast
 - [x] RegistrationDocumentCast

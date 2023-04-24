@@ -27,3 +27,8 @@ it('should generate a valid random key')
     ->group('NFeKey')
     ->expect(NFeKey::isValid(NFeKey::random()->numbers()))
     ->toBeTrue();
+
+it('should return false when model is invalid')
+    ->group('NFeKey')
+    ->expect(NFeKey::isValid('51180662182092000559560010000230361312086413'))
+    ->toBeFalse();

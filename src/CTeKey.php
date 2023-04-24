@@ -6,13 +6,11 @@ namespace Latte;
 
 use InvalidArgumentException;
 
-final class NFeKey
+final class CTeKey
 {
     private readonly array $value;
 
     private static int $characterLimit = 44;
-
-    private static array $models = [55];
 
     private static array $characterPosition = [
         'cUF' => [0, 2],
@@ -25,6 +23,8 @@ final class NFeKey
         'codeNumeric' => [35, 8],
         'dv' => [43, 1],
     ];
+
+    private static array $models = [57];
 
     private static array $federativeUnitCodes = [
         // Norte
