@@ -42,13 +42,13 @@ final class RegistrationDocument
         return $this->value::type();
     }
 
-    public static function random(RegistrationDocumentEnum $type): self
+    public static function random(RegistrationDocumentEnum $type = RegistrationDocumentEnum::CNPJ): self
     {
-        if ($type === RegistrationDocumentEnum::CPF) {
-            return new self(Cpf::random());
-        }
         if ($type === RegistrationDocumentEnum::CNPJ) {
             return new self(Cnpj::random());
+        }
+        if ($type === RegistrationDocumentEnum::CPF) {
+            return new self(Cpf::random());
         }
 
         throw new InvalidArgumentException('RegistrationDocumentEnum invalid!');
