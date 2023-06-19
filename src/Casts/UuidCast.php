@@ -15,6 +15,10 @@ final class UuidCast implements CastsAttributes
             return $value;
         }
 
+        if (is_null($value)) {
+            return null;
+        }
+
         return Uuid::create($value);
     }
 
@@ -22,6 +26,10 @@ final class UuidCast implements CastsAttributes
     {
         if (is_a($value, Uuid::class)) {
             return $value->getValue();
+        }
+
+        if (is_null($value)) {
+            return null;
         }
 
         return Uuid::create($value)->getValue();
