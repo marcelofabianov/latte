@@ -56,6 +56,9 @@ final class Json
 
             return $result;
         }
+        if (is_array($this->value) || is_object($this->value)) {
+            return $this->value;
+        }
 
         return false;
     }
