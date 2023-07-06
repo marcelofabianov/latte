@@ -29,15 +29,17 @@ final class RegistrationDocument
 
     public function isMatrix(): bool
     {
-        if ($this->type() === 'CPF') {
-            return false;
-        }
+        return $this->value->isMatrix();
+    }
 
-        if (strpos($this->numbers(), '0001')) {
-            return true;
-        }
+    public function prefixMatrix(): string|null
+    {
+        return $this->value->prefixMatrix();
+    }
 
-        return false;
+    public function root(): string|null
+    {
+        return $this->value->root();
     }
 
     public function numbers(): string

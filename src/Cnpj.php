@@ -33,6 +33,23 @@ final class Cnpj implements IRegistrationDocument
         return $this->numbers() === $other->numbers();
     }
 
+    public function root(): string|null
+    {
+        $cnpj = $this->numbers();
+
+        return substr($cnpj, 0, 8);
+    }
+
+    public function isMatrix(): bool
+    {
+        return str_contains($this->numbers(), '0001');
+    }
+
+    public function prefixMatrix(): string|null
+    {
+        return substr($this->numbers(), 0, 8);
+    }
+
     public function __toString(): string
     {
         return $this->numbers();

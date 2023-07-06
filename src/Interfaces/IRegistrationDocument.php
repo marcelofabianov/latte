@@ -16,5 +16,11 @@ interface IRegistrationDocument
 
     public function equals(self $other): bool;
 
+    public function root(): string|null;
+
+    public function isMatrix(): bool;
+
+    public function prefixMatrix(): string|null;
+
     public function __toString(): string;
 }

@@ -28,6 +28,11 @@ final class Cpf implements IRegistrationDocument
         return ApplyMask::custom($this->value, '###.###.###-##');
     }
 
+    public function root(): string|null
+    {
+        return null;
+    }
+
     public function equals(IRegistrationDocument $other): bool
     {
         return $this->numbers() === $other->numbers();
@@ -36,6 +41,16 @@ final class Cpf implements IRegistrationDocument
     public function __toString(): string
     {
         return $this->numbers();
+    }
+
+    public function isMatrix(): bool
+    {
+        return false;
+    }
+
+    public function prefixMatrix(): string|null
+    {
+        return null;
     }
 
     public static function isValid(string $value): bool
