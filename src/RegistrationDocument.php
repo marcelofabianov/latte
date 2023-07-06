@@ -17,6 +17,29 @@ final class RegistrationDocument
         $this->value = $value;
     }
 
+    public function __toString(): string
+    {
+        return $this->numbers();
+    }
+
+    public function getValue(): IRegistrationDocument
+    {
+        return $this->value;
+    }
+
+    public function isMatrix(): bool
+    {
+        if ($this->type() === 'CPF') {
+            return false;
+        }
+
+        if (strpos($this->numbers(), '0001')) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function numbers(): string
     {
         return $this->value->numbers();
@@ -30,11 +53,6 @@ final class RegistrationDocument
     public function equals(self $other): bool
     {
         return $this->numbers() === $other->numbers();
-    }
-
-    public function __toString(): string
-    {
-        return $this->numbers();
     }
 
     public function type(): string
