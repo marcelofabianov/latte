@@ -30,7 +30,7 @@ final class Cpf implements IRegistrationDocument
 
     public function root(): string|null
     {
-        return null;
+        return $this->numbers();
     }
 
     public function equals(IRegistrationDocument $other): bool
@@ -45,12 +45,12 @@ final class Cpf implements IRegistrationDocument
 
     public function isMatrix(): bool
     {
-        return false;
+        return true;
     }
 
     public function prefixMatrix(): string|null
     {
-        return null;
+        return $this->numbers();
     }
 
     public static function isValid(string $value): bool
